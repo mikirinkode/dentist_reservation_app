@@ -1,9 +1,8 @@
 import 'package:dentistreservation/app/module/history/history_view.dart';
 import 'package:dentistreservation/core/theme/app_color.dart';
 import 'package:dentistreservation/core/utils/ui_utils.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:dentistreservation/core/values/images.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../booking/booking_view.dart';
 import '../home/home_view.dart';
@@ -41,7 +40,7 @@ class _RootViewState extends State<RootView> {
                     _currentIndex = val;
                   });
                 },
-                onFabPressed: (){
+                onFabPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return BookingView();
                   }));
@@ -61,7 +60,9 @@ class CustomBottomNavBar extends StatefulWidget {
   final Function() onFabPressed;
 
   const CustomBottomNavBar(
-      {this.defaultSelectedIndex = 0, required this.onChange, required this.onFabPressed});
+      {this.defaultSelectedIndex = 0,
+      required this.onChange,
+      required this.onFabPressed});
 
   @override
   State<CustomBottomNavBar> createState() => _CustomBottomNavBarState();
@@ -83,20 +84,19 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
       children: [
         Container(
           decoration: BoxDecoration(
-              color: Colors.white, borderRadius: UIUtils.borderRadiusAll()
-          ),
+              color: Colors.white, borderRadius: UIUtils.borderRadiusAll()),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Flexible(
-                child: bottomNavBarItem("assets/icons/home_selected.png",
-                    "assets/icons/home_unselected.png", "Home", 0),
+                child: bottomNavBarItem(Images.homeSelectedIcon,
+                    Images.homeUnselectedIcon, "Home", 0),
               ),
               const Expanded(child: SizedBox()),
               Flexible(
-                child: bottomNavBarItem("assets/icons/history_selected.png",
-                    "assets/icons/history_unselected.png", "Riwayat", 1),
+                child: bottomNavBarItem(Images.historySelectedIcon,
+                    Images.historyUnselectedIcon, "Riwayat", 1),
               ),
             ],
           ),
@@ -105,10 +105,10 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
           padding: UIUtils.paddingBottom(16),
           child: FloatingActionButton(
             backgroundColor: AppColor.primary500,
-            onPressed: (){
-                widget.onFabPressed();
+            onPressed: () {
+              widget.onFabPressed();
             },
-            child: Image.asset("assets/icons/add_booking.png"),
+            child: Image.asset(Images.addBookingIcon),
           ),
         )
       ],

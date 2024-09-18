@@ -5,6 +5,11 @@ class UIUtils {
 
   static const double borderRadius = 16;
 
+  // space
+  static heightSpace(double height) => SizedBox(height: height);
+
+  static widthSpace(double width) => SizedBox(width: width);
+
   // padding
   static paddingAll(double padding) => EdgeInsets.all(padding);
 
@@ -30,4 +35,7 @@ class UIUtils {
 
   static borderRadiusTop({double radius = UIUtils.borderRadius}) =>
       BorderRadius.vertical(top: Radius.circular(radius));
+
+  static borderRadiusBottom({double radius = UIUtils.borderRadius}) =>
+      BorderRadius.vertical(bottom: Radius.circular(radius));
 }

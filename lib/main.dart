@@ -23,6 +23,10 @@ class MyApp extends StatelessWidget {
         primaryColor: AppColor.primary500,
         scaffoldBackgroundColor: AppColor.backgroundColor,
         useMaterial3: true,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          centerTitle: true
+        )
       ),
       home: RootView(currentScreen: 0),
     );
