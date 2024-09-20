@@ -130,7 +130,10 @@ class HomeView extends StatelessWidget {
                               UIUtils.heightSpace(4),
                               Row(
                                 children: [
-                                  Image.asset(Images.stethoscopeIcon),
+                                  Image.asset(
+                                    Images.stethoscopeIcon,
+                                    width: 18,
+                                  ),
                                   UIUtils.widthSpace(8),
                                   const Expanded(
                                       child: Text("drg. Arikha Ayif Ul")),
@@ -139,16 +142,24 @@ class HomeView extends StatelessWidget {
                               UIUtils.heightSpace(4),
                               Row(
                                 children: [
-                                  Image.asset(Images.markerIcon),
+                                  Image.asset(
+                                    Images.markerIcon,
+                                    width: 18,
+                                  ),
                                   UIUtils.widthSpace(8),
                                   const Expanded(
                                       child: Text("Jl. Kesehatan no 123")),
                                 ],
                               ),
                               UIUtils.heightSpace(4),
-                              Text(
-                                "Buka Google Map >",
-                                style: TextStyle(color: AppColor.primary500),
+                              GestureDetector(
+                                onTap: (){
+                                  // TODO: UNHANDLED ON TAP
+                                },
+                                child: Text(
+                                  "Buka Google Map >",
+                                  style: TextStyle(color: AppColor.primary500),
+                                ),
                               )
                             ],
                           ),

@@ -10,6 +10,8 @@ class Images {
   static String toothIcon = "assets/icons/tooth.png";
   static String stethoscopeIcon = "assets/icons/stethoscope.png";
   static String markerIcon = "assets/icons/marker.png";
+  static String calendarIcon = "assets/icons/calendar.png";
+  static String clockIcon = "assets/icons/clock.png";
 
   static String defaultProfile = "assets/images/default_profile.png";
   static String sampleAnnouncementBanner = "assets/images/sample_announcement_banner.png";

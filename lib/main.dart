@@ -1,3 +1,4 @@
+import 'package:dentistreservation/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 import 'app/module/root/root_view.dart';
@@ -15,19 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'DentalCare',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: AppColor.primary500,
-            primary: AppColor.primary500,
-            brightness: Brightness.light),
-        primaryColor: AppColor.primary500,
-        scaffoldBackgroundColor: AppColor.backgroundColor,
-        useMaterial3: true,
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.white,
-          centerTitle: true
-        )
-      ),
+      theme: AppTheme.lightTheme(),
       home: RootView(currentScreen: 0),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:dentistreservation/core/values/images.dart';
 
+import '../model/booking_history.dart';
 import '../model/dentist_service.dart';
 
 class DummyData{
@@ -12,5 +13,11 @@ class DummyData{
     DentistService(name: "Behel Gigi", iconPath: Images.toothIcon),
     DentistService(name: "Gigi Palsu", iconPath: Images.toothIcon),
     DentistService(name: "Putihin Gigi", iconPath: Images.toothIcon),
+  ];
+
+  static List<BookingHistory> historyList = [
+    BookingHistory(serviceName: "Tambal Gigi", date: "Senin, 15 Mei 2024", time: "10:00"),
+    BookingHistory(serviceName: "Perawatan Saraf Akar", date: "Senin, 13 Mei 2024", time: "10:00"),
+    BookingHistory(serviceName: "Periksa Gigi", date: "Senin, 1 Mei 2024", time: "10:00"),
   ];
 }
