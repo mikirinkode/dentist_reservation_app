@@ -18,10 +18,10 @@ class AppTheme {
       appBarTheme:
           const AppBarTheme(backgroundColor: Colors.white, centerTitle: true),
       inputDecorationTheme: InputDecorationTheme(
-        hintStyle: TextStyle(
+        hintStyle: const TextStyle(
           color: AppColor.neutral200
         ),
-        labelStyle: TextStyle(
+        labelStyle: const TextStyle(
           color: AppColor.neutral500
         ),
         border: OutlineInputBorder(

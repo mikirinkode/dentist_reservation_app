@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class UIUtils {
   UIUtils._();
 
-  static const double borderRadius = 16;
+  static const double borderRadius = 12;
 
   // space
   static heightSpace(double height) => SizedBox(height: height);
@@ -32,6 +32,9 @@ class UIUtils {
   // border radius
   static borderRadiusAll({double radius = UIUtils.borderRadius}) =>
       BorderRadius.circular(radius);
+
+  static borderRadiusSmall() => BorderRadius.circular(8);
+  static borderRadiusMedium() => BorderRadius.circular(borderRadius);
 
   static borderRadiusTop({double radius = UIUtils.borderRadius}) =>
       BorderRadius.vertical(top: Radius.circular(radius));
