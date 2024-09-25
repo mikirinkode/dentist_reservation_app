@@ -24,6 +24,10 @@ class _RootViewState extends State<RootView> {
   ];
 
   @override
+  void initState() {
+    _currentIndex = widget.currentScreen;
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(

@@ -136,7 +136,7 @@ class HomeView extends StatelessWidget {
                                   ),
                                   UIUtils.widthSpace(8),
                                   const Expanded(
-                                      child: Text("drg. Arikha Ayif Ul")),
+                                      child: Text("drg. Arihka Ayif Ul, Sp.KG")),
                                 ],
                               ),
                               UIUtils.heightSpace(4),

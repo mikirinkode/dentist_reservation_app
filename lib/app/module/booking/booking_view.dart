@@ -5,6 +5,8 @@ import 'package:dentistreservation/core/utils/time_utils.dart';
 import 'package:dentistreservation/core/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
 
+import '../confirmation/booking_confirmation_view.dart';
+
 class BookingView extends StatefulWidget {
   const BookingView({super.key});
 
@@ -28,8 +30,10 @@ class _BookingViewState extends State<BookingView> {
   // TIME
   String _selectedTime = "";
 
-  //
-  String _inputtedDiagnose = "";
+  // Service
+  String _selectedService = "";
+
+  // String _inputtedComplaint = "";
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +45,20 @@ class _BookingViewState extends State<BookingView> {
         padding: UIUtils.paddingAll(16),
         child: ElevatedButton(
           style: AppButtonStyle.filledPrimary,
-          onPressed: (_selectedDate == 0 || _selectedTime == "" || _inputtedDiagnose == "") ? null : () {},
+          onPressed: (_selectedDate == 0 ||
+                  _selectedTime == "" ||
+                  _selectedService == "")
+              ? null
+              : () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => BookingConfirmationView(
+                              date:
+                                  "$_selectedDate $_selectedMonthName $_selectedYear",
+                              time: _selectedTime,
+                              service: _selectedService)));
+                },
           child: const Text("Lanjut"),
         ),
       ),
@@ -160,41 +177,41 @@ class _BookingViewState extends State<BookingView> {
                       physics: const NeverScrollableScrollPhysics(),
                       crossAxisSpacing: 8,
                       mainAxisSpacing: 8,
-                        children: _availableDates
-                            .map((e) => GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  _selectedDate = e;
-                                });
-                              },
-                              child: Container(
-                                width: 40,
-                                decoration: BoxDecoration(
-                                    color: (_selectedDate == e)
-                                        ? AppColor.primary50
-                                        : Colors.white,
-                                    borderRadius:
-                                    UIUtils.borderRadiusSmall(),
-                                    border: Border.all(
-                                        color: (_selectedDate == e)
-                                            ? AppColor.primary500
-                                            : AppColor.neutral700,
-                                        width: 1)),
-                                alignment: Alignment.center,
-                                padding: UIUtils.paddingSymmetric(
-                                    vertical: 8, horizontal: 8),
-                                child: Text(
-                                  e.toString(),
-                                  style: TextStyle(
-                                    color: (_selectedDate == e)
-                                        ? AppColor.primary500
-                                        : AppColor.neutral700,
+                      children: _availableDates
+                          .map((e) => GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    _selectedDate = e;
+                                  });
+                                },
+                                child: Container(
+                                  width: 40,
+                                  decoration: BoxDecoration(
+                                      color: (_selectedDate == e)
+                                          ? AppColor.primary50
+                                          : Colors.white,
+                                      borderRadius: UIUtils.borderRadiusSmall(),
+                                      border: Border.all(
+                                          color: (_selectedDate == e)
+                                              ? AppColor.primary500
+                                              : AppColor.neutral700,
+                                          width: 1)),
+                                  alignment: Alignment.center,
+                                  padding: UIUtils.paddingSymmetric(
+                                      vertical: 8, horizontal: 8),
+                                  child: Text(
+                                    e.toString(),
+                                    style: TextStyle(
+                                      color: (_selectedDate == e)
+                                          ? AppColor.primary500
+                                          : AppColor.neutral700,
+                                    ),
+                                    textAlign: TextAlign.center,
                                   ),
-                                  textAlign: TextAlign.center,
                                 ),
-                              ),
-                            ))
-                            .toList(),)
+                              ))
+                          .toList(),
+                    )
                   ],
                 ),
               ),
@@ -320,25 +337,49 @@ class _BookingViewState extends State<BookingView> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text("Detail periksa"),
+                    const Text("Pilih layanan"),
                     UIUtils.heightSpace(16),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        labelText: "Keluhan",
-                        hintText: "Gigi terasa nyeri..",
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return "Keluhan tidak boleh kosong";
-                        }
-                        return null;
-                      },
-                      onChanged: (value){
-                        setState(() {
-                          _inputtedDiagnose = value;
-                        });
-                      },
-                    ),
+                    GridView.count(
+                      crossAxisCount: 3,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      crossAxisSpacing: 8,
+                      mainAxisSpacing: 8,
+                      children: DummyData.dentistServices
+                          .map((e) => GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    _selectedService = e.name;
+                                  });
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: (_selectedService == e.name)
+                                          ? AppColor.primary50
+                                          : Colors.white,
+                                      borderRadius: UIUtils.borderRadiusSmall(),
+                                      border: Border.all(
+                                          color: (_selectedService == e.name)
+                                              ? AppColor.primary500
+                                              : AppColor.neutral700,
+                                          width: 1)),
+                                  alignment: Alignment.center,
+                                  padding: UIUtils.paddingAll(8),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Image.asset(
+                                        e.iconPath,
+                                        width: 24,
+                                      ),
+                                      UIUtils.heightSpace(8),
+                                      Text(e.name)
+                                    ],
+                                  ),
+                                ),
+                              ))
+                          .toList(),
+                    )
                   ],
                 ),
               ),
