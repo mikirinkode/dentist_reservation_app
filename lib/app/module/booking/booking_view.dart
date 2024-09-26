@@ -8,7 +8,8 @@ import 'package:flutter/material.dart';
 import '../confirmation/booking_confirmation_view.dart';
 
 class BookingView extends StatefulWidget {
-  const BookingView({super.key});
+  final String selectedService;
+  const BookingView({super.key, required this.selectedService});
 
   @override
   State<BookingView> createState() => _BookingViewState();
@@ -33,13 +34,17 @@ class _BookingViewState extends State<BookingView> {
   // Service
   String _selectedService = "";
 
-  // String _inputtedComplaint = "";
+  @override
+  void initState() {
+    _selectedService = widget.selectedService;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Reservasi"),
+        backgroundColor: Colors.white,
       ),
       bottomNavigationBar: Padding(
         padding: UIUtils.paddingAll(16),
@@ -194,7 +199,7 @@ class _BookingViewState extends State<BookingView> {
                                       border: Border.all(
                                           color: (_selectedDate == e)
                                               ? AppColor.primary500
-                                              : AppColor.neutral700,
+                                              : AppColor.neutral200,
                                           width: 1)),
                                   alignment: Alignment.center,
                                   padding: UIUtils.paddingSymmetric(
@@ -253,7 +258,7 @@ class _BookingViewState extends State<BookingView> {
                               height: 12,
                               decoration: BoxDecoration(
                                   border:
-                                      Border.all(color: AppColor.neutral700)),
+                                      Border.all(color: AppColor.neutral200)),
                             ),
                             UIUtils.widthSpace(8),
                             const Text("Kosong")
@@ -287,8 +292,10 @@ class _BookingViewState extends State<BookingView> {
                           .map((e) => GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    _selectedTime = e.time;
-                                    debugPrint("selected time: $_selectedTime");
+                                    if (e.isAvailable){
+                                      _selectedTime = e.time;
+                                      debugPrint("selected time: $_selectedTime");
+                                    }
                                   });
                                 },
                                 child: Container(
@@ -303,7 +310,7 @@ class _BookingViewState extends State<BookingView> {
                                           color: (_selectedTime == e.time)
                                               ? AppColor.primary500
                                               : e.isAvailable
-                                                  ? AppColor.neutral700
+                                                  ? AppColor.neutral200
                                                   : AppColor.neutral200,
                                           width: 1)),
                                   alignment: Alignment.center,
@@ -361,19 +368,27 @@ class _BookingViewState extends State<BookingView> {
                                       border: Border.all(
                                           color: (_selectedService == e.name)
                                               ? AppColor.primary500
-                                              : AppColor.neutral700,
+                                              : AppColor.neutral200,
                                           width: 1)),
                                   alignment: Alignment.center,
                                   padding: UIUtils.paddingAll(8),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      Image.asset(
-                                        e.iconPath,
-                                        width: 24,
-                                      ),
+                                      Image.asset(e.iconPath,
+                                          width: 24,
+                                          color: (_selectedService == e.name)
+                                              ? AppColor.primary500
+                                              : AppColor.neutral700),
                                       UIUtils.heightSpace(8),
-                                      Text(e.name)
+                                      Text(
+                                        e.name,
+                                        style: TextStyle(
+                                            color: (_selectedService == e.name)
+                                                ? AppColor.primary500
+                                                : AppColor.neutral700),
+                                        textAlign: TextAlign.center,
+                                      )
                                     ],
                                   ),
                                 ),

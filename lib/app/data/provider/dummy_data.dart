@@ -8,18 +8,18 @@ class DummyData{
   DummyData._();
 
   static List<DentistService> dentistServices = [
-    DentistService(name: "Cabut Gigi", iconPath: Images.toothIcon),
-    DentistService(name: "Tambal Gigi", iconPath: Images.toothIcon),
-    DentistService(name: "Pasang Gigi", iconPath: Images.toothIcon),
-    DentistService(name: "Behel Gigi", iconPath: Images.toothIcon),
-    DentistService(name: "Gigi Palsu", iconPath: Images.toothIcon),
-    DentistService(name: "Putihin Gigi", iconPath: Images.toothIcon),
+    DentistService(name: "Behel Gigi", iconPath: Images.toothBracesIcon),
+    DentistService(name: "Tambal Gigi", iconPath: Images.toothFillingIcon),
+    DentistService(name: "Cabut Gigi", iconPath: Images.toothRemovalIcon),
+    DentistService(name: "Perawatan Saraf Akar", iconPath: Images.toothRootCanalIcon),
+    DentistService(name: "Pembersihan Karang Gigi", iconPath: Images.toothScalingIcon),
+    DentistService(name: "Pelapisan Gigi", iconPath: Images.toothVeneerIcon),
   ];
 
   static List<BookingHistory> historyList = [
-    BookingHistory(serviceName: "Tambal Gigi", date: "Senin, 15 Mei 2024", time: "10:00"),
-    BookingHistory(serviceName: "Perawatan Saraf Akar", date: "Senin, 13 Mei 2024", time: "10:00"),
-    BookingHistory(serviceName: "Periksa Gigi", date: "Senin, 1 Mei 2024", time: "10:00"),
+    // BookingHistory(serviceName: "Tambal Gigi", date: "Senin, 15 Mei 2024", time: "10:00"),
+    // BookingHistory(serviceName: "Perawatan Saraf Akar", date: "Senin, 13 Mei 2024", time: "10:00"),
+    // BookingHistory(serviceName: "Periksa Gigi", date: "Senin, 1 Mei 2024", time: "10:00"),
   ];
 
   static List<AvailableTime> availableTimeList = [

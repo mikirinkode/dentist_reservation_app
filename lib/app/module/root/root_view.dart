@@ -46,7 +46,7 @@ class _RootViewState extends State<RootView> {
                 },
                 onFabPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return BookingView();
+                    return BookingView(selectedService: "",);
                   }));
                 },
               ),

@@ -6,6 +6,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import '../booking/booking_view.dart';
+
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
@@ -62,7 +64,14 @@ class HomeView extends StatelessWidget {
             UIUtils.heightSpace(8),
             Padding(
               padding: UIUtils.paddingHorizontal(16),
-              child: Image.asset(Images.sampleAnnouncementBanner),
+              child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return const BookingView(selectedService: "",);
+                    }));
+                  },
+                  child: Image.asset(Images.sampleAnnouncementBanner)),
             ),
             UIUtils.heightSpace(24),
             Padding(
@@ -77,25 +86,34 @@ class HomeView extends StatelessWidget {
                 children: DummyData.dentistServices
                     .map((e) => Padding(
                           padding: UIUtils.paddingRight(16),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: UIUtils.borderRadiusAll()),
-                            padding: UIUtils.paddingAll(16),
-                            child: Column(
-                              children: [
-                                Container(
-                                    decoration: const BoxDecoration(
-                                        color: AppColor.primary50,
-                                        shape: BoxShape.circle),
-                                    padding: UIUtils.paddingAll(16),
-                                    child: Image.asset(
-                                      e.iconPath,
-                                      width: 24,
-                                    )),
-                                UIUtils.heightSpace(8),
-                                Text(e.name)
-                              ],
+                          child: GestureDetector(
+                            onTap: (){
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                    return BookingView(selectedService: e.name,);
+                                  }));
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: UIUtils.borderRadiusAll()),
+                              padding: UIUtils.paddingAll(16),
+                              child: Column(
+                                children: [
+                                  Container(
+                                      decoration: const BoxDecoration(
+                                          color: AppColor.primary50,
+                                          shape: BoxShape.circle),
+                                      padding: UIUtils.paddingAll(16),
+                                      child: Image.asset(
+                                        e.iconPath,
+                                        width: 32,
+                                        color: AppColor.primary500,
+                                      )),
+                                  UIUtils.heightSpace(8),
+                                  Text(e.name)
+                                ],
+                              ),
                             ),
                           ),
                         ))
@@ -136,7 +154,8 @@ class HomeView extends StatelessWidget {
                                   ),
                                   UIUtils.widthSpace(8),
                                   const Expanded(
-                                      child: Text("drg. Arihka Ayif Ul, Sp.KG")),
+                                      child:
+                                          Text("drg. Arihka Ayif Ul, Sp.KG")),
                                 ],
                               ),
                               UIUtils.heightSpace(4),
@@ -153,7 +172,7 @@ class HomeView extends StatelessWidget {
                               ),
                               UIUtils.heightSpace(4),
                               GestureDetector(
-                                onTap: (){
+                                onTap: () {
                                   // TODO: UNHANDLED ON TAP
                                 },
                                 child: Text(
